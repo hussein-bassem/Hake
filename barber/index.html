@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>احلقلي PRO | لوحة الحلاق</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #101010;
+      color: white;
+      min-height: 100vh;
+    }
+
+    :root {
+      --gold: #d4af37;
+      --card: #1c1c1c;
+      --muted: #aaa;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    .header {
+      padding: 22px;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo small {
+      display: block;
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .container {
+      width: min(950px, 92%);
+      margin: 35px auto;
+    }
+
+    .login-card {
+      background: var(--card);
+      border: 1px solid #333;
+      border-radius: 18px;
+      padding: 28px;
+      max-width: 420px;
+      margin: 45px auto;
+    }
+
+    h2 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #444;
+      background: #111;
+      border-radius: 10px;
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 700;
+    }
+
+    .primary {
+      background: var(--gold);
+      color: #111;
+      width: 100%;
+      margin-top: 22px;
+    }
+
+    .logout {
+      background: #333;
+      color: white;
+    }
+
+    .message {
+      color: #ff7777;
+      font-size: 13px;
+      margin-top: 15px;
+      line-height: 1.8;
+    }
+
+    .dashboard {
+      display: none;
+    }
+
+    .welcome {
+      margin-bottom: 25px;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 14px;
+      margin: 25px 0;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold);
+      font-size: 27px;
+      margin-top: 8px;
+    }
+
+    .section {
+      background: var(--card);
+      padding: 22px;
+      border: 1px solid #333;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .section h3 {
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 5px;
+      font-size: 14px;
+    }
+
+    .booking {
+      background: #111;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border: 1px solid #333;
+    }
+
+    .booking strong {
+      color: var(--gold);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 35px 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    احلقلي
+    <small>E7LEGLI PRO</small>
+  </div>
+  <button id="logoutBtn" class="logout hidden">تسجيل الخروج</button>
+</header>
+
+<main class="container">
+
+  <section id="loginSection" class="login-card">
+    <h2>دخول الحلاق ✂️</h2>
+    <p class="subtitle">سجّل الدخول لإدارة الصالون والحجوزات</p>
+
+    <form id="loginForm">
+      <label for="email">البريد الإلكتروني</label>
+      <input id="email" type="email" placeholder="example@email.com" required>
+
+      <label for="password">كلمة المرور</label>
+      <input id="password" type="password" placeholder="كلمة المرور" required>
+
+      <button class="primary" id="loginBtn" type="submit">
+        تسجيل الدخول
+      </button>
+    </form>
+
+    <p id="loginMessage" class="message"></p>
+  </section>
+
+  <section id="dashboard" class="dashboard">
+    <div class="welcome">
+      <h2>لوحة إدارة الصالون ✂️</h2>
+      <p>أهلاً بك في نظام احلقلي لإدارة الحجوزات.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span>إجمالي الحجوزات</span>
+        <strong id="totalCount">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>قيد الانتظار</span>
+        <strong id="waitingCount">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>المكتملة</span>
+        <strong id="doneCount">0</strong>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>قائمة الحجوزات</h3>
+      <div id="bookingList" class="empty">
+        جاري تحميل الحجوزات...
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  E7LEGLI PRO © 2026
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyA8ms8Qwcltm__A46Klk_g5n_pRc8T14gc",
+    authDomain: "e7legli.firebaseapp.com",
+    projectId: "e7legli",
+    storageBucket: "e7legli.firebasestorage.app",
+    messagingSenderId: "524957367002",
+    appId: "1:524957367002:web:9a087a5678bb7a1c9a43e3",
+    measurementId: "G-LLDKM9LHW1"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  const loginSection = document.getElementById("loginSection");
+  const dashboard = document.getElementById("dashboard");
+  const loginMessage = document.getElementById("loginMessage");
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  let unsubscribeBookings = null;
+
+  function showLogin(message = "") {
+    loginSection.style.display = "block";
+    dashboard.style.display = "none";
+    logoutBtn.classList.add("hidden");
+    loginMessage.textContent = message;
+
+    if (unsubscribeBookings) {
+      unsubscribeBookings();
+      unsubscribeBookings = null;
+    }
+  }
+
+  async function checkAdmin(user) {
+    try {
+      const adminDoc = await db.collection("admins").doc(user.uid).get();
+
+      if (!adminDoc.exists || adminDoc.data().role !== "admin") {
+        await auth.signOut();
+        showLogin("هذا الحساب غير مصرح له بالدخول إلى لوحة الحلاق.");
+        return;
+      }
+
+      loginSection.style.display = "none";
+      dashboard.style.display = "block";
+      logoutBtn.classList.remove("hidden");
+
+      loadBookings();
+
+    } catch (error) {
+      await auth.signOut();
+      showLogin("تعذر التحقق من الصلاحيات. تأكد من قواعد Firestore.");
+    }
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "جاري الدخول...";
+    loginMessage.textContent = "";
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      showLogin("تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.");
+    } finally {
+      loginBtn.disabled = false;
+      loginBtn.textContent = "تسجيل الدخول";
+    }
+  });
+
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      await checkAdmin(user);
+    } else {
+      showLogin();
+    }
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    auth.signOut();
+  });
+
+  function loadBookings() {
+    if (unsubscribeBookings) unsubscribeBookings();
+
+    unsubscribeBookings = db.collection("appointments")
+      .onSnapshot(snapshot => {
+        const list = document.getElementById("bookingList");
+
+        let total = 0;
+        let waiting = 0;
+        let done = 0;
+
+        list.innerHTML = "";
+
+        if (snapshot.empty) {
+          list.textContent = "ماكو حجوزات حالياً.";
+          list.className = "empty";
+        } else {
+          list.className = "";
+
+          snapshot.forEach(doc => {
+            const booking = doc.data();
+            total++;
+
+            if (booking.status === "waiting") waiting++;
+            if (booking.status === "done") done++;
+
+            const item = document.createElement("div");
+            item.className = "booking";
+
+            const name = document.createElement("strong");
+            name.textContent = booking.name || "زبون";
+
+            const details = document.createElement("p");
+            details.textContent =
+              "الخدمة: " + (booking.service || "غير محددة") +
+              " | الحالة: " + (booking.status || "غير محددة");
+
+            item.append(name, details);
+            list.appendChild(item);
+          });
+        }
+
+        document.getElementById("totalCount").textContent = total;
+        document.getElementById("waitingCount").textContent = waiting;
+        document.getElementById("doneCount").textContent = done;
+
+      }, error => {
+        document.getElementById("bookingList").textContent =
+          "تعذر تحميل الحجوزات. راجع صلاحيات قاعدة البيانات.";
+      });
+  }
+</script>
+
+</body>
+</html>
