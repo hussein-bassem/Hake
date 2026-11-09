@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151515">
+  <title>احلقلي | E7LEGLI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#">
+    <span class="brand-mark">ح</span>
+    <span>
+      <strong>احلقلي</strong>
+      <small>E7LEGLI</small>
+    </span>
+  </a>
+  <span class="open-pill">● الصالون مفتوح</span>
+</header>
+
+<main>
+
+<section class="hero">
+  <p class="eyebrow">وقتك ثمين.. لا تضيّعه بالانتظار</p>
+
+  <h1>
+    احجز دورك<br>
+    <span>وخلي الباقي علينا.</span>
+  </h1>
+
+  <p class="hero-copy">
+    تابع دورك، اعرف وقت انتظارك،
+    ووصل للحلاق بالوقت المناسب.
+  </p>
+
+  <a class="primary-btn" href="#booking">
+    احجز دورك الآن ←
+  </a>
+
+  <div class="hero-note">
+    ✦ حجز سهل • انتظار أوضح • وقت أرتب
+  </div>
+</section>
+
+<section class="stats">
+  <article>
+    <span>♙</span>
+    <strong id="waiting-count">0</strong>
+    <small>بانتظار دورهم</small>
+  </article>
+
+  <article>
+    <span>◷</span>
+    <strong id="wait-time">0 د</strong>
+    <small>وقت الانتظار المتوقع</small>
+  </article>
+
+  <article>
+    <span>▣</span>
+    <strong id="chair-count">3</strong>
+    <small>كراسي الحلاقة</small>
+  </article>
+</section>
+
+<section class="section" id="booking">
+
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">خطوة بسيطة</p>
+      <h2>احجز دورك</h2>
+    </div>
+    <span class="step-tag">01 / 02</span>
+  </div>
+
+  <form id="booking-form" class="booking-card">
+
+    <label for="customer-name">اسمك</label>
+    <input
+      id="customer-name"
+      name="name"
+      type="text"
+      maxlength="40"
+      placeholder="اكتب اسمك هنا"
+      required
+    >
+
+    <label for="service">نوع الخدمة</label>
+
+    <select id="service" name="service">
+      <option value="حلاقة شعر">حلاقة شعر — 20 دقيقة</option>
+      <option value="حلاقة وتحديد">حلاقة وتحديد — 30 دقيقة</option>
+      <option value="تحديد لحية">تحديد لحية — 15 دقيقة</option>
+    </select>
+
+    <button class="primary-btn full" type="submit">
+      انضم إلى قائمة الانتظار ←
+    </button>
+
+    <p class="form-hint">
+      نسخة تجريبية من نظام الحجز.
+    </p>
+
+  </form>
+</section>
+
+<section class="section">
+
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">تابع حركة الصالون</p>
+      <h2>الأدوار الحالية</h2>
+    </div>
+    <span class="live-tag">● مباشر تجريبي</span>
+  </div>
+
+  <div id="queue-list" class="queue-list">
+    <div class="empty-state">
+      ماكو أدوار معروضة حالياً.
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">تنظيم العمل</p>
+      <h2>كراسي الحلاقة</h2>
+    </div>
+  </div>
+
+  <div class="chair-grid">
+
+    <article class="chair-card">
+      <span>01</span>
+      <div class="chair-symbol">♜</div>
+      <strong>الكرسي الأول</strong>
+      <small>متاح تجريبياً</small>
+    </article>
+
+    <article class="chair-card">
+      <span>02</span>
+      <div class="chair-symbol">♜</div>
+      <strong>الكرسي الثاني</strong>
+      <small>متاح تجريبياً</small>
+    </article>
+
+    <article class="chair-card">
+      <span>03</span>
+      <div class="chair-symbol">♜</div>
+      <strong>الكرسي الثالث</strong>
+      <small>متاح تجريبياً</small>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand footer-brand">
+    <span class="brand-mark">ح</span>
+    <span>
+      <strong>احلقلي</strong>
+      <small>E7LEGLI</small>
+    </span>
+  </div>
+
+  <p>حجزك أسهل.. ووقتك أغلى.</p>
+  <small>© 2026 E7LEGLI</small>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
